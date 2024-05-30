@@ -1,0 +1,26 @@
+img {
+  max-width: 85%;
+  height: auto;
+  margin-bottom: 10px; /* Reduce el margen inferior de la imagen */
+}
+
+h1 {
+  margin-bottom: 10px; /* Reduce el margen inferior del encabezado */
+}
+
+p {
+  margin-bottom: 5px; /* Reduce el margen inferior de los párrafos */
+}
+
+.container {
+  max-width: 700px; /* Ajusta el ancho máximo del contenedor para centrar mejor el contenido */
+}
+
+.row {
+  align-items: center;
+}
+
+.col-md-4, .col-md-8 {
+  padding-left: 0;
+  padding-right: 0;
+}

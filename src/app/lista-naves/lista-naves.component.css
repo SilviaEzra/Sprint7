@@ -1,0 +1,26 @@
+
+.container{
+    width: 100%;
+    height: auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.text{
+    color: black !important;
+    
+}
+
+.target{
+  background-color: rgb(234, 209, 22);;
+  text-align: center;
+  width: 600px;
+  height: 150px;
+  padding: 50px;
+  margin-bottom: 20px;
+  align-items: center;
+  align-content: center;
+ 
+}

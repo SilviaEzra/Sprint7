@@ -1,0 +1,11 @@
+.btn {
+background-color:rgb(234, 209, 22) !important;
+color:black;
+}
+
+.my-form input[type="text"]::placeholder,
+.my-form input[type="password"]::placeholder {
+  
+  padding-left: 10px; /* Ajusta el espacio del placeholder */
+}
+

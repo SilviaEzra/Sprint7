@@ -1,0 +1,53 @@
+
+<div class="container mt-5">
+  <div class="row mb-3 justify-content-center align-items-center">
+    <div class="col text-center">
+      <div class="social-icons d-inline-block align-items-center">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+      </div>
+    </div>
+    <div class="col text-center">
+      <img src="assets/img/sw.png" class="img-fluid" style="width: 170px; height: 170px;">
+    </div>
+    <div class="col text-center">
+      <button type="button" class="btn custom-btn btn-sm" data-bs-toggle="modal" data-bs-target="#registerModal">Sign Up</button>
+      <button type="button" class="btn custom-btn btn-sm btn-margin" data-bs-toggle="modal" data-bs-target="#loginModal">Log In</button>
+      <button type="button" class="btn btn-white" id="btnc"(click)="cerrarSesion()">Sign Out</button>
+    </div>
+    
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content custom-modal">
+          <div class="modal-header">
+            <h5 class="modal-title" id="registerModalLabel">Sign Up</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <app-register></app-register>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content custom-modal">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Log In</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <app-login></app-login>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+  </div>
+</div>

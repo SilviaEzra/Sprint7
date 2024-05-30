@@ -1,0 +1,25 @@
+<div *ngIf="nave; else noData" class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container mt-4">
+    <div class="row align-items-center">
+      <div class="col-md-6 pr-8">
+        <img [src]="imageUrl" (error)="onImageError($event)" alt="{{ nave.name }}" class="img-fluid mb-2" />
+      </div>
+      <div class="col-md-6 pl-8 text-left">
+        <h1>{{ nave.name }}</h1>
+        <p><strong>Model:</strong> {{ nave.model }}</p>
+        <p><strong>Manufacturer:</strong> {{ nave.manufacturer }}</p>
+        <p><strong>Cost in Credits:</strong> {{ nave.cost_in_credits }}</p>
+        <p><strong>Length:</strong> {{ nave.length }}</p>
+        <p><strong>Max Atmosphering Speed:</strong> {{ nave.max_atmosphering_speed }}</p>
+        <p><strong>Crew:</strong> {{ nave.crew }}</p>
+        <p><strong>Passengers:</strong> {{ nave.passengers }}</p>
+        <p><strong>Cargo Capacity:</strong> {{ nave.cargo_capacity }}</p>
+        <p><strong>Consumables:</strong> {{ nave.consumables }}</p>
+        <p><strong>Starship Class:</strong> {{ nave.starship_class }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noData>
+  <p>Loading ship details...</p>
+</ng-template>

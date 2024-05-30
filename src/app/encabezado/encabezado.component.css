@@ -1,0 +1,27 @@
+.custom-btn {
+    color: black;
+    background-color: rgb(234, 209, 22);
+    transition: background-color 0.3s;
+  }
+  .custom-btn:hover {
+    background-color: white;
+  }
+
+  .btn-margin {
+    margin-left: 10px;
+  }
+
+  .social-icons i {
+    color: rgb(234, 209, 22);
+    margin-left: 10px;
+    font-size: 1.5em; /* Ajusta el tamaño del icono si es necesario */
+  }
+.modal-content {
+    background-color: transparent !important;
+    color: rgb(255, 255, 255);
+  }
+#btnc{
+  color: rgb(234, 209, 22);
+
+}
+  

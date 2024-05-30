@@ -1,0 +1,23 @@
+
+  .navbar-nav .nav-link {
+    color: rgb(234, 209, 22) !important; /* Texto amarillo */
+    position: relative;
+    padding-bottom: 10px; /* Espacio para la línea */
+  }
+  
+  .navbar-nav .nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: rgb(234, 209, 22);
+    transition: width 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .navbar-nav .nav-link:hover::after {
+    width: 100%;
+  }
+  
