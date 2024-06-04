@@ -30,11 +30,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 `npm install -D json-server@0.17.4 json-server-auth`
 
 2. Create the db.json file in the root of the project to store users with the following content:
+
 `
 {
   "users": []
 }
 `
+
 3. Activate the backend with JSON Server Auth:
 
 `npx json-server-auth db.json`
