@@ -22,6 +22,36 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+# Installation and Configuration of JSON Server Auth
+## Installation of JSON Server Auth
+
+1. Install json-server and json-server-auth as development dependencies:
+
+npm install -D json-server@0.17.4 json-server-auth
+
+2. Create the db.json file in the root of the project to store users with the following content:
+
+{
+  "users": []
+}
+
+3. Activate the backend with JSON Server Auth:
+
+npx json-server-auth db.json
+
+
+## Contributions
+
+If you wish to contribute to this project, please open an issue or submit a pull request.
+
+
+## License
+
+This project is licensed under the MIT License.
+
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
