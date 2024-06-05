@@ -16,11 +16,21 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  errorMessage: string | null = null;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+
+    // Suscribirse a los cambios en los campos de entrada para restablecer el errorMessage
+    this.loginForm.get('email')?.valueChanges.subscribe(() => {
+      this.errorMessage = null;
+    });
+
+    this.loginForm.get('password')?.valueChanges.subscribe(() => {
+      this.errorMessage = null;
     });
   }
 
@@ -28,15 +38,19 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next: () => {
-          console.log('Inicio de sesión exitoso. Redirigiendo al usuario a la página de inicio...');
+          console.log('Login successful. Redirecting to the home page...');
           const redirectUrl = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
-          this.authService.redirectUrl = null; // Limpiar la URL de redirección
+          this.authService.redirectUrl = null; // Clear the redirect URL
           this.router.navigate([redirectUrl]);
         },
-        error: (err) => console.error('Error durante el inicio de sesión: ', err)
+        error: (err) => {
+          console.error('Error during login: ', err);
+          this.errorMessage = 'Invalid email or password. Please try again.';
+        }
       });
     } else {
-      console.log('Formulario de inicio de sesión inválido. No se puede iniciar sesión.');
+      console.log('Invalid login form. Cannot proceed with login.');
+      this.errorMessage = 'Please fill in all required fields correctly.';
     }
   }
 }

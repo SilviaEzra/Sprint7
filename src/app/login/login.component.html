@@ -1,20 +1,37 @@
 <div class="container">
   <div class="d-flex justify-content-center h-100">
-    <form [formGroup]="loginForm" (ngSubmit)="login()" class="my-form">
-      <div class="input-group form-group mb-2">
-        <div class="input-group-prepend">
-          
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="form-group mb-2">
+        <input
+          type="text"
+          class="form-control rounded"
+          placeholder="Email"
+          id="email"
+          formControlName="email"
+        />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger mt-1">
+          <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</small>
+          <small *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format</small>
         </div>
-        <input type="text" class="form-control rounded" placeholder="Email"id="email" formControlName="email">
       </div>
-      <div class="input-group form-group mb-2">
-        <div class="input-group-prepend">
-    
+      <div class="form-group mb-2">
+        <input
+          type="password"
+          class="form-control rounded"
+          placeholder="Password"
+          id="password"
+          formControlName="password"
+        />
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger mt-1">
+          <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</small>
+          <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long</small>
         </div>
-        <input type="password" class="form-control rounded" placeholder="Password"id="password" type="password" formControlName="password" >
-      </div> 
+      </div>
       <div class="form-group">
-        <input type="submit" value="Login" class="btn float-right login_btn">
+        <input type="submit" value="Login" class="btn float-right login_btn" [disabled]="loginForm.invalid" />
+      </div>
+      <div *ngIf="errorMessage" class="text-danger mt-2">
+        {{ errorMessage }}
       </div>
     </form>
   </div>

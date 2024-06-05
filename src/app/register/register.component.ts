@@ -19,7 +19,7 @@ export class RegisterComponent {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
@@ -29,14 +29,13 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe({
         next: () => {
-          console.log('Registro exitoso. Redirigiendo al usuario a la página de inicio de sesión...');
+          console.log('Registration successful. Redirecting to login page...');
           this.router.navigate(['/login']);
         },
-        error: (err) => console.error('Error durante el registro: ', err)
+        error: (err) => console.error('Error during registration: ', err)
       });
     } else {
-      console.log('Formulario de registro inválido. No se puede realizar el registro.');
+      console.log('Invalid registration form. Cannot proceed with registration.');
     }
   }
-  
 }

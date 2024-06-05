@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -19,7 +19,7 @@ export class AuthService {
 
   register(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, user).pipe(
-      catchError(this.handleError<any>('register', []))
+      catchError(this.handleError<any>('register'))
     );
   }
 
@@ -30,16 +30,14 @@ export class AuthService {
         localStorage.setItem('authToken', response.token);
         return response;
       }),
-      catchError(this.handleError<AuthResponse>('login', {} as AuthResponse))
+      catchError(this.handleError<AuthResponse>('login'))
     );
   }
 
-  
-
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation') {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);
-      return of(result as T);
+      return throwError(() => new Error(error.message));
     };
   }
 

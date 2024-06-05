@@ -9,3 +9,11 @@ color:black;
   padding-left: 10px; /* Ajusta el espacio del placeholder */
 }
 
+.text-danger {
+  color: red;
+  font-size: 0.8em;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}

@@ -12,7 +12,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class ListaNavesComponent implements OnInit {
   data: any[] = [];
-  currentRoute: string | null = null;
+  showLoadMoreButton: boolean = true; // Bandera para controlar la visibilidad del botón "Ver más"
   currentPage: number = 1;
 
   constructor(private starwarsService: StarwarsService, private router: Router) {}
@@ -22,7 +22,9 @@ export class ListaNavesComponent implements OnInit {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.currentRoute = event.url;
+        this.data = [];
+        this.currentPage = 1;
+        this.loadNaves();
       }
     });
   }
@@ -31,10 +33,12 @@ export class ListaNavesComponent implements OnInit {
     this.starwarsService.getData(this.currentPage).subscribe(
       response => {
         this.data = this.data.concat(response.results);
+        console.log('Número de naves cargadas:', this.data.length);
         this.currentPage++;
       },
       error => {
         console.error('Error fetching data', error);
+        this.showLoadMoreButton = false; // Ocultar el botón "Ver más" en caso de error
       }
     );
   }

@@ -1,4 +1,13 @@
 .btn {
-    background-color:rgb(234, 209, 22) !important;
-    color:black;
-    }
+  background-color: rgb(234, 209, 22) !important;
+  color: black;
+}
+
+.text-danger {
+  color: red;
+  font-size: 0.8em;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}

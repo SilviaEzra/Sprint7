@@ -1,17 +1,13 @@
-
 <div class="container" *ngFor="let starship of data"> 
   <div class="target starship rounded"  (click)="goToNave(starship)">
     <div class="text">
       <h3>{{ starship.name }}</h3>
       <p>Model: {{ starship.model }}</p>
       <br>
+    </div>
   </div>
-  
 </div>
-  </div>
-  <div class="button text-center">
-<button (click)="loadNaves()" class="btn btn-light  mb-2">Ver más</button>
-</div>
-  
-  
 
+<div class="button text-center" *ngIf="showLoadMoreButton">
+  <button (click)="loadNaves()" class="btn btn-light mb-2">Ver más</button>
+</div>
