@@ -12,25 +12,38 @@
       <img src="assets/img/sw.png" class="img-fluid" style="width: 170px; height: 170px;">
     </div>
     <div class="col text-center">
-      <button type="button" class="btn custom-btn btn-sm" data-bs-toggle="modal" data-bs-target="#registerModal">Sign Up</button>
-      <button type="button" class="btn custom-btn btn-sm btn-margin" data-bs-toggle="modal" data-bs-target="#loginModal">Log In</button>
-      <button type="button" class="btn btn-white" id="btnc"(click)="cerrarSesion()">Sign Out</button>
+      <button *ngIf="!isLoggedIn" type="button" class="btn custom-btn btn-sm" data-bs-toggle="modal" data-bs-target="#registerModal">Sign Up</button>
+      <button *ngIf="!isLoggedIn" type="button" class="btn custom-btn btn-sm btn-margin" data-bs-toggle="modal" data-bs-target="#loginModal">Log In</button>
+      <button *ngIf="isLoggedIn" type="button" class="btn btn-white" id="btnc" (click)="cerrarSesion()">Sign Out</button>
     </div>
+
+
+ 
+
+
+  
+
+
     
     <!-- Register Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content custom-modal">
-          <div class="modal-header">
-            <h5 class="modal-title" id="registerModalLabel">Sign Up</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <app-register></app-register>
-          </div>
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content custom-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Sign Up</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-register (registrationSuccess)="onRegistrationSuccess()"></app-register>
+        <div class="form-group">
+          <input type="submit" value="Sign Up" class="btn float-right login_btn" data-bs-dismiss="modal" [disabled]="registerForm.invalid" />
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+    
     
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">

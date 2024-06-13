@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../../auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -9,14 +9,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    CommonModule
-  ]
+  imports: [ReactiveFormsModule, CommonModule]
 })
 export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string | null = null;
+
+  @Output() loginSuccess: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
@@ -41,6 +40,7 @@ export class LoginComponent {
           console.log('Login successful. Redirecting to the home page...');
           const redirectUrl = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
           this.authService.redirectUrl = null; // Clear the redirect URL
+          this.loginSuccess.emit();
           this.router.navigate([redirectUrl]);
         },
         error: (err) => {
@@ -49,7 +49,6 @@ export class LoginComponent {
         }
       });
     } else {
-      console.log('Invalid login form. Cannot proceed with login.');
       this.errorMessage = 'Please fill in all required fields correctly.';
     }
   }

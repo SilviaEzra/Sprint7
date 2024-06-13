@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StarwarsService } from '../starwars.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-naves',
@@ -18,15 +18,8 @@ export class ListaNavesComponent implements OnInit {
   constructor(private starwarsService: StarwarsService, private router: Router) {}
 
   ngOnInit(): void {
+    // Cargar naves solo cuando se inicializa el componente
     this.loadNaves();
-
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.data = [];
-        this.currentPage = 1;
-        this.loadNaves();
-      }
-    });
   }
 
   loadNaves(): void {
@@ -41,6 +34,11 @@ export class ListaNavesComponent implements OnInit {
         this.showLoadMoreButton = false; // Ocultar el botón "Ver más" en caso de error
       }
     );
+  }
+
+  onLoadMore(): void {
+    // Cargar más naves cuando se hace clic en el botón "Ver más"
+    this.loadNaves();
   }
 
   goToNave(starship: any): void {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -15,6 +15,9 @@ export class AuthService {
   private apiUrl = 'http://localhost:3000';
   redirectUrl: string | null = null;
 
+  private loginSuccessSubject = new Subject<void>();
+  loginSuccess = this.loginSuccessSubject.asObservable();
+
   constructor(private http: HttpClient, private router: Router) {}
 
   register(user: any): Observable<any> {
@@ -28,6 +31,7 @@ export class AuthService {
       map(response => {
         console.log(response);
         localStorage.setItem('authToken', response.token);
+        this.loginSuccessSubject.next();
         return response;
       }),
       catchError(this.handleError<AuthResponse>('login'))
