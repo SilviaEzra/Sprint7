@@ -66,75 +66,42 @@ Este proyecto ha sido generado con [Angular CLI](https://github.com/angular/angu
 
 Para ejecutar un servidor de desarrollo, utiliza el siguiente comando:
 ```sh
-ng serve```
+ng serve
+```
 
-## Navega a http://localhost:4200/ en tu navegador. La aplicación se recargará automáticamente si realizas cambios en los archivos fuente.
+Navega a http://localhost:4200/ en tu navegador. La aplicación se recargará automáticamente si realizas cambios en los archivos fuente.
 
 ## Generación de Código
-Para generar un nuevo componente, usa:
 
+Para generar un nuevo componente, usa:
 ```sh
-Copiar código
-ng generate component nombre-componente```
+ng generate component nombre-componente
+```
 
 También puedes usar:
-
 ```sh
-Copiar código
 ng generate directive|pipe|service|class|guard|interface|enum|module
-Construcción
-Para construir el proyecto, ejecuta
+```
 
+## Construcción
+Para construir el proyecto, ejecuta:
 ```sh
-Copiar código
-ng build ```
-Los artefactos de construcción se almacenarán en el directorio dist/.
+ng build
+```
 
 ## Ejecución de Pruebas Unitarias
 Para ejecutar las pruebas unitarias mediante Karma, utiliza:
 
-sh
-Copiar código
+```sh
 ng test
-Ejecución de Pruebas End-to-End
-Para ejecutar las pruebas end-to-end, primero necesitas agregar un paquete que implemente las capacidades de pruebas end-to-end. Luego, ejecuta:
+```
 
-sh
-Copiar código
-ng e2e
-Ayuda Adicional
+##Ayuda Adicional
 Para obtener más ayuda sobre Angular CLI, usa:
 
-sh
-Copiar código
+```sh
 ng help
-O visita la página de referencia de Angular CLI.
+```
 
-Contribuyendo
-Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 
-Haz un fork del proyecto.
-Crea una nueva rama (git checkout -b feature/nueva-funcionalidad).
-Realiza tus cambios y haz commit (git commit -am 'Agrega nueva funcionalidad').
-Empuja la rama (git push origin feature/nueva-funcionalidad).
-Abre un Pull Request.
-Licencia
-Este proyecto está bajo la Licencia MIT. Para más detalles, consulta el archivo LICENSE.
 
-Development server
-Run ng serve for a dev server. Navigate to http://localhost:4200/. The application will automatically reload if you change any of the source files.
-
-Code scaffolding
-Run ng generate component component-name to generate a new component. You can also use ng generate directive|pipe|service|class|guard|interface|enum|module.
-
-Build
-Run ng build to build the project. The build artifacts will be stored in the dist/ directory.
-
-Running unit tests
-Run ng test to execute the unit tests via Karma.
-
-Running end-to-end tests
-Run ng e2e to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-Further help
-To get more help on the Angular CLI use ng help or go check out the Angular CLI Overview and Command Reference page.
